@@ -19,6 +19,6 @@ class UsersController < ApplicationController
   private
 
   def default_url
-    'https://advisingconnect.osu.edu/assets/default_brutus.png'
+    'https://opic-s.asc.ohio-state.edu/uploads/avatar/brutus_buckeye.png'
   end
 end
