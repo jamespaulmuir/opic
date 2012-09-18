@@ -56,4 +56,4 @@ after "deploy:create_symlink" do
   ].join(" && ")
 end
 
-after "deploy:restart", "deploy:cleanup"
+after "deploy:restart", "delayed_job:restart", "deploy:cleanup"
