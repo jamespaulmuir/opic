@@ -5,6 +5,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   include ::CarrierWave::Backgrounder::Delay
 
+  class InvalidImageRequest < StandardError
+  end
+
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
   #include Sprockets::Helpers::RailsHelper
   # include Sprockets::Helpers::IsolatedHelper
@@ -23,71 +26,32 @@ class AvatarUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
+
   # Resize original
   process :resize_to_fit => [533,533]
 
-  version :s50 do
-    process :resize_to_fill => [50,50]
+  ASPECTS = ['p', 's']
+  WIDTHS = (50..400).step(50)
+
+  ASPECTS.each do |aspect|
+    WIDTHS.each do |width|
+      version "#{aspect}#{width}" do
+        process :resize_to_fill => [width, (width * 4.0 / 3.0).to_i]
+      end
+    end
   end
 
-  version :s100 do
-    process :resize_to_fill => [100,100]
-  end
+  def by_width_and_aspect(width, aspect)
+    width ||= 100
+    aspect ||= 's'
+    width = width.to_i
+    puts "Width" + width.to_s
 
-  version :s150 do
-    process :resize_to_fill => [150,150]
-  end
-
-  version :s200 do
-    process :resize_to_fill => [200,200]
-  end
-
-  version :s250 do
-    process :resize_to_fill => [250,250]
-  end
-
-  version :s300 do
-    process :resize_to_fill => [300,300]
-  end
-
-  version :s350 do
-    process :resize_to_fill => [350,350]
-  end
-
-  version :s400 do
-    process :resize_to_fill => [400,400]
-  end
-
-  version :p50 do
-    process :resize_to_fill => [50,66]
-  end
-
-  version :p100 do
-    process :resize_to_fill => [100,133]
-  end
-
-  version :p150 do
-    process :resize_to_fill => [150,200]
-  end
-
-  version :p200 do
-    process :resize_to_fill => [200,266]
-  end
-
-  version :p250 do
-    process :resize_to_fill => [250,333]
-  end
-
-  version :p300 do
-    process :resize_to_fill => [300,400]
-  end
-
-  version :p350 do
-    process :resize_to_fill => [350,466]
-  end
-
-  version :p400 do
-    process :resize_to_fill => [400,533]
+    if (WIDTHS.include? width) && (ASPECTS.include? aspect)
+      send "#{aspect}#{width}"
+    else
+      raise InvalidImageRequest.new("Valid sizes are: #{WIDTHS.to_s[1..-2]}. Valid aspects are: #{ASPECTS.to_s[1..-2]}.")
+    end
   end
 
 
