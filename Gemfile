@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails'
 
+gem 'rvm-capistrano'
+
 gem 'sqlite3'
 gem 'mysql2', :group => [:staging, :production]
 

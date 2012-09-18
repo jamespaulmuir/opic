@@ -1,4 +1,7 @@
 require 'bundler/capistrano'
+require 'rvm/capistrano'
+
+set :rvm_ruby_string, ENV['GEM_HOME'].gsub(/.*\//,"")
 
 set :application, "opic"
 set :repository,  "git@github.com:ASCTech/opic.git"
