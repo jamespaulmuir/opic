@@ -47,7 +47,7 @@ namespace :deploy do
   end
 end
 
-before "deploy:assets:precompile" do
+after "deploy:create_symlink" do
   run [
     "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml",
     "ln -fs #{shared_path}/uploads #{release_path}/uploads",

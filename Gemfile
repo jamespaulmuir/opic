@@ -24,9 +24,10 @@ gem 'carrierwave'
 
 gem 'gravtastic'
 
+gem 'twitter-bootstrap-rails'
+
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
-  gem 'twitter-bootstrap-rails'
   gem 'uglifier'
 end
