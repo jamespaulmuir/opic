@@ -20,6 +20,8 @@ gem 'simple_form'
 
 gem 'carrierwave'
 
+gem 'gravtastic'
+
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
