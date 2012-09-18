@@ -4,7 +4,7 @@ gem 'rails'
 
 gem 'rvm-capistrano'
 
-gem 'sqlite3'
+gem 'sqlite3', :group => [:development, :test]
 gem 'mysql2', :group => [:staging, :production]
 
 gem 'capistrano'
