@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   authenticated_by_shibboleth
-  attr_accessible :avatar, :emplid, :name_n
+  attr_accessible :emplid, :name_n
+  has_many :avatars
 
-  mount_uploader :avatar, AvatarUploader
 
 end

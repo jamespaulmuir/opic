@@ -1,2 +1,6 @@
 .page-header
   %h1 Upload your Opic
+
+  = simple_form_for @avatar do |form|
+
+    - form.button :submit

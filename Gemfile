@@ -16,6 +16,8 @@ gem 'shibboleth-rails'
 
 gem 'jquery-rails'
 
+gem 'simple_form'
+
 gem 'carrierwave'
 
 group :assets do
