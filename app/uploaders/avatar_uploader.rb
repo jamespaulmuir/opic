@@ -36,7 +36,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
   ASPECTS.each do |aspect|
     WIDTHS.each do |width|
       version "#{aspect}#{width}" do
-        process :resize_to_fill => [width, (width * 4.0 / 3.0).to_i]
+        height = aspect == 's' ? width : width * 4.0 / 3.0
+        process :resize_to_fill => [width, height.to_i]
       end
     end
   end

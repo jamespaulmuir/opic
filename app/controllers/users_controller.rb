@@ -6,10 +6,12 @@ class UsersController < ApplicationController
 
     if @user.present? && @user.avatars.present?
       @avatar = @user.avatars.last
-      send_file @avatar.picture.by_width_and_aspect(params[:width], params[:aspect]).path
+      picture = @avatar.picture.by_width_and_aspect(params[:width], params[:aspect])
+      send_file picture.path, :filename => "#{name_n}.#{picture.path.split('.').last}"
     else
       @user = User.new(:name_n => name_n)
-      redirect_to @user.gravatar_url(:default => params[:default] || default_url)
+      width = params[:width] || 100
+      redirect_to @user.gravatar_url(:default => params[:default] || default_url, :size => width)
     end
 
   end
