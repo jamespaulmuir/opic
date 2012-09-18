@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     name_n = params[:name_n].downcase
     @user = User.find_by_name_n(name_n)
 
-    if @user.avatars.present?
+    if @user.present? && @user.avatars.present?
       @avatar = @user.avatars.last
       send_file @avatar.picture.thumb.path
     else
