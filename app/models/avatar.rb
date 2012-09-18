@@ -3,4 +3,5 @@ class Avatar < ActiveRecord::Base
   belongs_to :user
 
   mount_uploader :picture, AvatarUploader
+  process_in_background :picture
 end

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
     if @user
       @avatar = @user.avatars.last
-      send_file @avatar.picture.path
+      send_file @avatar.picture.thumb.path
     else
       @user = User.new(:name_n => params[:name_n])
       redirect_to @user.gravatar_url(:default => params[:default] || default_url)

@@ -17,12 +17,15 @@ gem 'json'
 gem 'shibboleth-rails'
 
 gem 'jquery-rails'
+gem 'daemons'
 
 gem 'simple_form'
 
 gem 'carrierwave'
+gem 'carrierwave_backgrounder'
 
 gem 'gravtastic'
+gem 'mini_magick'
 
 gem 'twitter-bootstrap-rails'
 
