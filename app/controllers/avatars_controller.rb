@@ -2,7 +2,7 @@ class AvatarsController < ApplicationController
   before_filter :require_shibboleth
 
   def new
-    @current_avatar = current_user.avatars.last
+    @current_avatar = current_user.avatars.last if current_user.avatars.present?
     @avatar = Avatar.new
 
     respond_to do |format|
