@@ -28,7 +28,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
 
   # Resize original
-  process :resize_to_fit => [533,533]
+  process :resize_to_fill => [533,533]
 
   ASPECTS = ['p', 's']
   WIDTHS = (50..400).step(50)
