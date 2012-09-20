@@ -51,7 +51,7 @@ end
 after "deploy:create_symlink" do
   run [
     "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml",
-    "ln -fs #{shared_path}/uploads #{release_path}/uploads",
+    "ln -fs #{shared_path}/uploads #{release_path}/public/uploads",
     "ln -fs #{shared_path}/tmp/pids #{release_path}/tmp/pids",
     "rm #{release_path}/public/system"
   ].join(" && ")
