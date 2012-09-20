@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  rescue 
+
   def show
     name_n = params[:name_n].downcase
     @user = User.find_by_name_n(name_n)
@@ -13,6 +15,10 @@ class UsersController < ApplicationController
       width = params[:width] || 100
       redirect_to @user.gravatar_url(:default => params[:default] || default_url, :size => width)
     end
+
+  rescue
+    email = "#{params[:name_n].strip.downcase}@osu.edu"
+    redirect_to "https://secure.gravatar.com/avatar/#{Digest::MD5.hexdigest(email).to_s.downcase}?s=#{params[:width] || 100}&r=pg"
 
   end
 
