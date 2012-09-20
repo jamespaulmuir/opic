@@ -2,7 +2,7 @@ require 'bundler/capistrano'
 require 'delayed/recipes'
 require 'rvm/capistrano'
 
-set :rvm_ruby_string, ENV['GEM_HOME'].gsub(/.*\//,"")
+set :rvm_ruby_string, ENV['GEM_HOME'].gsub(/.*\//,"").gsub(/-p\d+/,"")
 
 set :application, "opic"
 set :repository,  "git@github.com:ASCTech/opic.git"
