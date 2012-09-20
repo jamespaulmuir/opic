@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  rescue 
-
   def show
     name_n = params[:name_n].downcase
     @user = User.find_by_name_n(name_n)
