@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   rescue
     email = "#{params[:name_n].strip.downcase}@osu.edu"
-    redirect_to "https://secure.gravatar.com/avatar/#{Digest::MD5.hexdigest(email).to_s.downcase}?s=#{params[:width] || 100}&r=pg"
+    redirect_to "https://secure.gravatar.com/avatar/#{Digest::MD5.hexdigest(email).to_s.downcase}?s=#{params[:width] || 100}&r=pg&d=mm"
 
   end
 
