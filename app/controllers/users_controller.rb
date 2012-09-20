@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     if @user.present? && @user.avatars.present?
       @avatar = @user.avatars.last
       picture = @avatar.picture.by_width_and_aspect(params[:width], params[:aspect])
-      send_file picture.path, :filename => "#{name_n}.#{picture.path.split('.').last}"
+      send_file picture.path, :filename => "#{name_n}.#{picture.path.split('.').last}", :disposition => 'inline'
     else
       @user = User.new(:name_n => name_n)
       width = params[:width] || 100
