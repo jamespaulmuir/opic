@@ -29,6 +29,13 @@ task :staging do
   role :db, "ruby-test.asc.ohio-state.edu", :primary => true
 end
 
+task :production do
+  set :rails_env, "production"
+  role :app, "appservices.asc.ohio-state.edu"
+  role :web, "appservices.asc.ohio-state.edu"
+  set :ssh_options, { :forward_agent => true, :port => 22 }
+end
+
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
   desc "Restarting mod_rails with restart.txt"

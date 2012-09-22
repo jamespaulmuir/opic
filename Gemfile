@@ -7,6 +7,8 @@ gem 'rvm-capistrano'
 gem 'sqlite3', :group => [:development, :test]
 gem 'mysql2', :group => [:staging, :production]
 
+gem activerecord-mysql2-adapter
+
 gem 'capistrano'
 gem 'delayed_job_active_record'
 gem 'daemons'
