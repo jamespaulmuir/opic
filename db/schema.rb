@@ -11,13 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120918181759) do
+ActiveRecord::Schema.define(:version => 20120922023143) do
 
   create_table "avatars", :force => true do |t|
     t.string   "picture"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "remote_picture"
+    t.string   "remote_picture_url"
   end
 
   create_table "delayed_jobs", :force => true do |t|

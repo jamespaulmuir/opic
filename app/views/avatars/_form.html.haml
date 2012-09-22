@@ -1,3 +1,7 @@
 = simple_form_for(@avatar, :html => { :class => "form-horizontal" } ) do |f|
   = f.file_field :picture
   = f.button :submit, 'Update opic'
+
+= simple_form_for(@avatar, :html => { :class => "form-horizontal" } ) do |f|
+  = f.text_field :remote_picture_url
+  = f.button :submit, 'Fetch Remote opic'
