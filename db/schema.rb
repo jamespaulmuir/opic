@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120922023143) do
+ActiveRecord::Schema.define(:version => 20120924123949) do
 
   create_table "avatars", :force => true do |t|
     t.string   "picture"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20120922023143) do
     t.datetime "updated_at",         :null => false
     t.string   "remote_picture"
     t.string   "remote_picture_url"
+    t.boolean  "gravatar"
   end
 
   create_table "delayed_jobs", :force => true do |t|

@@ -43,10 +43,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def by_width_and_aspect(width, aspect)
-    width ||= 100
-    aspect ||= 's'
     width = width.to_i
-    puts "Width" + width.to_s
 
     if (WIDTHS.include? width) && (ASPECTS.include? aspect)
       send "#{aspect}#{width}"

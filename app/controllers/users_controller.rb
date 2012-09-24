@@ -1,22 +1,24 @@
 class UsersController < ApplicationController
+  require 'net/http'
 
   def show
-    name_n = params[:name_n].downcase
-    @user = User.find_by_name_n(name_n)
+    name_n = params[:name_n].to_s.strip.downcase
+    params[:default]  ||= default_url
+    params[:width]    ||= 100
+    params[:aspect]   ||= 's'
+    @user = User.find_or_create_by_name_n!(name_n)
 
-    if @user.present? && @user.avatars.present?
+    if @user.avatars.present?
       @avatar = @user.avatars.last
       picture = @avatar.picture.by_width_and_aspect(params[:width], params[:aspect])
       send_file picture.path, :filename => "#{name_n}.#{picture.path.split('.').last}", :disposition => 'inline'
     else
-      @user = User.new(:name_n => name_n)
-      width = params[:width] || 100
-      redirect_to @user.gravatar_url(:default => params[:default] || default_url, :size => width)
+      redirect_to @user.avatar_url(params.slice(:default, :width, :aspect))
     end
 
   rescue
-    email = "#{params[:name_n].strip.downcase}@osu.edu"
-    redirect_to "https://secure.gravatar.com/avatar/#{Digest::MD5.hexdigest(email).to_s.downcase}?s=#{params[:width] || 100}&r=pg&d=mm"
+    email = "#{name_n}@osu.edu"
+    redirect_to "https://secure.gravatar.com/avatar/#{Digest::MD5.hexdigest(email).to_s.downcase}?s=#{params[:width]}&r=pg&d=mm"
 
   end
 
