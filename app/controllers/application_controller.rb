@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def default_url
-    'https://advisingconnect.osu.edu/assets/default_brutus.png'
+  def default_url(width, aspect)
+    root_url + "assets/#{aspect}#{width}_brutus_buckeye.png"
   end
 
 end

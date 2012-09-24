@@ -27,11 +27,15 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
 
-  # Resize original
-  process :resize_to_fill => [533,533]
-
   ASPECTS = ['p', 's']
   WIDTHS = (50..400).step(50)
+
+  def self.max_height
+    (WIDTHS.max * 4.0 / 3.0).to_i
+  end
+
+  # Resize original
+  process :resize_to_fill => [max_height,max_height]
 
   ASPECTS.each do |aspect|
     WIDTHS.each do |width|
