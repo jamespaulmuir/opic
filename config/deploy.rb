@@ -31,9 +31,10 @@ end
 
 task :production do
   set :rails_env, "production"
+  set :ssh_options, { :forward_agent => true, :port => 22 }
   role :app, "appservices.asc.ohio-state.edu"
   role :web, "appservices.asc.ohio-state.edu"
-  set :ssh_options, { :forward_agent => true, :port => 22 }
+  role :db, "appservices.asc.ohio-state.edu", :primary => true
 end
 
 # If you are using Passenger mod_rails uncomment this:
