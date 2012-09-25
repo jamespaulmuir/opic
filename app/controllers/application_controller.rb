@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def default_url(width, aspect)
+  def default_url(width = 250, aspect ='p')
     root_url + "assets/#{aspect}#{width}_brutus_buckeye.png"
   end
 

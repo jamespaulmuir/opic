@@ -4,7 +4,7 @@
     - if @current_avatar.present?
       = image_tag @current_avatar.picture.p400
     - else
-      %div= image_tag current_user.gravatar_url(:default => default_url(:width => 400, :aspect => s), :size => 400)
+      %div= image_tag current_user.gravatar_url(:default => default_url, :size => 400)
       Pulled from #{link_to 'Gravatar.com', 'http://gravatar.com'} for #{current_user.email}
   .span3
     %h4 Update your opic
