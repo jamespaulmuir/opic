@@ -55,6 +55,8 @@ GEM
     delayed_job_active_record (0.3.2)
       activerecord (> 2.1.0)
       delayed_job (~> 3.0.0)
+    egg-notifier (0.0.2)
+      json
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -166,6 +168,7 @@ DEPENDENCIES
   coffee-rails
   daemons
   delayed_job_active_record
+  egg-notifier
   gravtastic
   haml-rails
   jquery-rails

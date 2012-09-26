@@ -20,6 +20,7 @@ class AvatarsController < ApplicationController
 
     respond_to do |format|
       if @avatar.save
+        Egg.delay.notify('Picture Uploaded', Time.zone.now)
         format.html { redirect_to @avatar, :notice => 'Avatar was successfully created.' }
         format.json { render :json => @avatar, :status => :created, :location => @avatar }
       else

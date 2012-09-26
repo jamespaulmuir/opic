@@ -14,6 +14,8 @@ gem 'daemons'
 gem 'haml-rails'
 gem 'json'
 
+gem 'egg-notifier'
+
 gem 'shibboleth-rails'
 
 gem 'jquery-rails'
