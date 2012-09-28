@@ -21,6 +21,9 @@ gem 'shibboleth-rails'
 gem 'jquery-rails'
 gem 'daemons'
 
+
+gem 'apian', :path => '../apian'
+
 gem 'simple_form'
 
 gem 'carrierwave'

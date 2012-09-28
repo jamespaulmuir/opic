@@ -1,3 +1,9 @@
+PATH
+  remote: ../apian
+  specs:
+    apian (0.0.1)
+      rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -162,6 +168,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  apian!
   capistrano
   carrierwave
   carrierwave_backgrounder

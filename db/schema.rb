@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120924123949) do
+ActiveRecord::Schema.define(:version => 20120928134402) do
 
   create_table "avatars", :force => true do |t|
     t.string   "picture"
@@ -21,7 +21,10 @@ ActiveRecord::Schema.define(:version => 20120924123949) do
     t.string   "remote_picture"
     t.string   "remote_picture_url"
     t.boolean  "gravatar"
+    t.integer  "service_id"
   end
+
+  add_index "avatars", ["service_id"], :name => "index_avatars_on_service_id"
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -39,9 +42,15 @@ ActiveRecord::Schema.define(:version => 20120924123949) do
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
+  create_table "services", :force => true do |t|
+    t.string   "name"
+    t.string   "key"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name_n"
-    t.integer  "emplid"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

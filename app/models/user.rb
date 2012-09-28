@@ -37,7 +37,9 @@ class User < ActiveRecord::Base
   end
 
   def create_avatar_from_gravatar!
-    avatars.create!(:remote_picture_url => gravatar_url(:size => AvatarUploader.max_height))
+    avatar = avatars.build(:remote_picture_url => gravatar_url(:size => AvatarUploader.max_height))
+    avatar.service = Service.find_by_name('gravatar')
+    avatar.save!
   end
 
   #Overriding shib-rails.

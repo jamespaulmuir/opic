@@ -17,6 +17,7 @@ class AvatarsController < ApplicationController
 
   def create
     @avatar = current_user.avatars.build(params[:avatar])
+    @avatar.service = Service.find_by_name('opic')
 
     respond_to do |format|
       if @avatar.save
