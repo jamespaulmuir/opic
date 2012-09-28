@@ -22,7 +22,8 @@ gem 'jquery-rails'
 gem 'daemons'
 
 
-gem 'apian', :path => '../apian'
+#gem 'apian', :path => '../apian'
+gem 'apian', :git => 'git@github.com:ASCTech/apian.git'
 
 gem 'simple_form'
 
