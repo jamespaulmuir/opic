@@ -1,11 +1,11 @@
 .row
-  .span9
-    %h2 Your opic
+  .span5
+    %h1 Your opic
     - if @current_avatar.present?
       = image_tag @current_avatar.picture.p400
     - else
       %div= image_tag current_user.gravatar_url(:default => default_url, :size => 400)
       Pulled from #{link_to 'Gravatar.com', 'http://gravatar.com'} for #{current_user.email}
   .span3
-    %h4 Update your opic
+    %h2 Update your opic
     = render 'form'

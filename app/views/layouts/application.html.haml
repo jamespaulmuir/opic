@@ -17,14 +17,6 @@
 
 
   %body
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.brand(href="/") o-pic
 
     .container
 
@@ -33,10 +25,11 @@
           .span8.offset2.prepend2.box
             = bootstrap_flash
             = yield
-            .row
-              %footer
-                %p.pull-left &copy; ASC Technology Services 2012
-                %p.pull-right= link_to 'Developers', developers_url
+        .row
+          .span8.offset2.prepend2.box
+            %footer
+              %p.pull-left &copy; ASC Technology Services 2012
+              %p.pull-right= link_to 'Developers', developers_url
     /
       Javascripts
       \==================================================
