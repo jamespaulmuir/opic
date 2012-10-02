@@ -4,8 +4,6 @@ Opic::Application.routes.draw do
 
   get '/:name_n'       => 'users#show', :constraints => {:name_n => /\D+\.\d+/ }
 
-  get '/:hash'         => 'users#show'
-
   post '/use_gravatar'  => 'avatars#use_gravatar'
 
   root :to => 'avatars#new'
@@ -13,5 +11,7 @@ Opic::Application.routes.draw do
   get '/developers' => 'pages#developers'
  
   post '/api/avatars' => 'api#create'
+
+  get '/:hash'         => 'users#show'
 
 end
