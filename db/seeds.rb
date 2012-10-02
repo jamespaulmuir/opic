@@ -1,4 +1,4 @@
-User.find_or_create_by_name_n(:name_n => 'butsko.7', :emplid => 100176442)
+User.find_or_create_by_name_n(:name_n => 'butsko.7')
 opic = Service.find_or_create_by_name('opic')
 opic.update_column(:key, nil)
 gravatar = Service.find_or_create_by_name('gravatar')

@@ -31,4 +31,9 @@ class AvatarsController < ApplicationController
     end
   end
 
+  def use_gravatar
+    current_user.create_avatar_from_gravatar!
+    redirect_to root_url
+  end
+
 end

@@ -6,10 +6,12 @@ Opic::Application.routes.draw do
 
   get '/:hash'         => 'users#show'
 
+  post '/use_gravatar'  => 'avatars#use_gravatar'
+
   root :to => 'avatars#new'
 
   get '/developers' => 'pages#developers'
  
-  post 'api/avatars' => 'api#create'
+  post '/api/avatars' => 'api#create'
 
 end

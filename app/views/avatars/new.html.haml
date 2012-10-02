@@ -1,11 +1,14 @@
 .row
   .span5
-    %h1 Your opic
     - if @current_avatar.present?
+      %h1 Your opic
       = image_tag @current_avatar.picture.p400
-    - else
+    - elsif current_user.has_gravatar?
       %div= image_tag current_user.gravatar_url(:default => default_url, :size => 400)
       Pulled from #{link_to 'Gravatar.com', 'http://gravatar.com'} for #{current_user.email}
+      %div= link_to "Make my Gravatar my opic", use_gravatar_path, :method => :post, :class => "btn"
+    - else
+      %h1 You have no opic!
   .span3
     %h2 Update your opic
     = render 'form'
