@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   include Gravtastic
   has_gravatar :secure => true
 
+  before_create :hash_the_name_n
   validates_uniqueness_of :name_n
   validates_format_of :name_n, :with => /\A[a-z]([a-z-]*[a-z])?\.[1-9]\d*\z/, :message => 'must be in format: name.#'
 
@@ -16,24 +17,10 @@ class User < ActiveRecord::Base
   end
 
   def has_gravatar?
-    Rails.cache.fetch("has_gravatar_#{self.name_n}", :expires_in => 1.week) do
-      url = URI(gravatar_url(:default => 404))
-      http = Net::HTTP.new(url.host, url.port)
-      http.use_ssl = url.scheme == 'https'
-      Net::HTTPOK === http.request_head("#{url.path}?#{url.query}") 
-    end
-  end
-
-  def avatar_url(args = {})
-    return args[:default] unless has_gravatar?
-
-    if args[:aspect] == 's'
-      delay.create_avatar_from_gravatar!
-      gravatar_url(args)
-    else
-      avatar = create_avatar_from_gravatar!
-      avatar.picture.by_width_and_aspect(args[:width], args[:aspect]).url 
-    end
+    url = URI(gravatar_url(:default => 404))
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = url.scheme == 'https'
+    Net::HTTPOK === http.request_head("#{url.path}?#{url.query}") 
   end
 
   def create_avatar_from_gravatar!
@@ -45,6 +32,12 @@ class User < ActiveRecord::Base
   #Overriding shib-rails.
   def self.find_or_create_from_shibboleth(identity)
     find_or_create_by_name_n(identity)
+  end
+
+  private
+
+  def hash_the_name_n
+    self.hashed_name_n = Digest::MD5.hexdigest(self.name_n).downcase
   end
 
 end

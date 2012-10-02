@@ -4,6 +4,8 @@ Opic::Application.routes.draw do
 
   get '/:name_n'       => 'users#show', :constraints => {:name_n => /\D+\.\d+/ }
 
+  get '/:hash'         => 'users#show'
+
   root :to => 'avatars#new'
 
   get '/developers' => 'pages#developers'
