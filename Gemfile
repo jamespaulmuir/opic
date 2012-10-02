@@ -35,8 +35,9 @@ gem 'mini_magick'
 
 gem 'twitter-bootstrap-rails'
 
+gem 'sass-rails'
+
 group :assets do
-  gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
 end
