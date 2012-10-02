@@ -30,13 +30,13 @@
 
       .content
         .row
-          .span12
+          .span8.offset2.prepend2.box
             = bootstrap_flash
             = yield
-    
-      %footer
-        %p.pull-left &copy; ASC Technology Services 2012
-        %p.pull-right= link_to 'Developers', developers_url
+            .row
+              %footer
+                %p.pull-left &copy; ASC Technology Services 2012
+                %p.pull-right= link_to 'Developers', developers_url
     /
       Javascripts
       \==================================================

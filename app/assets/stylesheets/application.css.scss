@@ -12,3 +12,25 @@
  *= require_tree .
  *= require bootstrap_and_overrides
  */
+body {
+  background:#ccc image-url('concrete_wall_3.png') repeat left top;
+}
+
+h1 {
+  font-family: "Arvo", Helvetica, Arial, sans-serif;
+  color:#990000;
+  margin-bottom:1em;
+    
+  small {
+    font-size: 70%;
+    font-weight: normal;
+    color: #999;
+    float: right;
+  }
+}
+
+label.password { font-size:1.1em; }
+input.password { font-size:1.6em; width:90%; height:28px;}
+.box {border:6px solid #CCC; padding:20px; background-color:#fff;}
+.help-inline { display:block; }
+.footer{margin-top:1em;}
