@@ -12,3 +12,7 @@
   .span3
     %h2 Update your opic
     = render 'form'
+    - if current_user.opted_out?
+      You're currently opted out. Upload a new picture to opt back in.
+    - else
+      = link_to "No Use opic pleasy", opt_out_path, :method => :put, :class => "btn btn-danger btn-mini"

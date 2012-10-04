@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121002164150) do
+ActiveRecord::Schema.define(:version => 20121004190012) do
 
   create_table "avatars", :force => true do |t|
     t.string   "picture"
@@ -51,9 +51,10 @@ ActiveRecord::Schema.define(:version => 20121002164150) do
 
   create_table "users", :force => true do |t|
     t.string   "name_n"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.string   "hashed_name_n"
+    t.boolean  "opted_out",     :default => false
   end
 
   add_index "users", ["hashed_name_n"], :name => "index_users_on_hashed_name_n"

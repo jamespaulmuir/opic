@@ -34,6 +34,11 @@ class User < ActiveRecord::Base
     find_or_create_by_name_n(identity)
   end
 
+  def opt_out!
+    avatars.delete_all
+    update_column :opted_out, true
+  end
+
   private
 
   def hash_the_name_n
