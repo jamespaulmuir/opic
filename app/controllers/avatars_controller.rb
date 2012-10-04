@@ -16,6 +16,7 @@ class AvatarsController < ApplicationController
   end
 
   def create
+    current_user.opt_in!
     @avatar = current_user.avatars.build(params[:avatar])
     @avatar.service = Service.find_by_name('opic')
 
@@ -32,6 +33,7 @@ class AvatarsController < ApplicationController
   end
 
   def use_gravatar
+    current_user.opt_in!
     current_user.create_avatar_from_gravatar!
     redirect_to root_url
   end

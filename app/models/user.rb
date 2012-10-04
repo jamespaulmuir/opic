@@ -39,6 +39,10 @@ class User < ActiveRecord::Base
     update_column :opted_out, true
   end
 
+  def opt_in!
+    update_column :opted_out, false
+  end
+
   private
 
   def hash_the_name_n
