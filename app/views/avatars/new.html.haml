@@ -3,6 +3,9 @@
     - if @current_avatar.present?
       %h1 Your opic
       = image_tag @current_avatar.picture.p400
+    - elsif current_user.opted_out?
+      %h1 You are opted out of Opic
+      = image_tag default_url
     - elsif current_user.has_gravatar?
       %div= image_tag current_user.gravatar_url(:default => default_url, :size => 400)
       Pulled from #{link_to 'Gravatar.com', 'http://gravatar.com'} for #{current_user.email}
@@ -13,6 +16,9 @@
     %h2 Update your opic
     = render 'form'
     - if current_user.opted_out?
-      You're currently opted out. Upload a new picture to opt back in.
+      - if current_user.has_gravatar?
+        %div= image_tag current_user.gravatar_url(:default => default_url, :size => 250)
+        Pulled from #{link_to 'Gravatar.com', 'http://gravatar.com'} for #{current_user.email}
+        %div= link_to "Opt Back In and Make my Gravatar my opic", use_gravatar_path, :method => :post, :class => "btn"
     - else
-      = link_to "No Use opic pleasy", opt_out_path, :method => :put, :class => "btn btn-danger btn-mini"
+      = link_to "Opt Out of Opic Service", opt_out_path, :method => :put, :class => "btn btn-danger btn-mini"
