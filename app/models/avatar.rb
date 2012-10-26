@@ -3,7 +3,10 @@ class Avatar < ActiveRecord::Base
   belongs_to :user
   belongs_to :service
 
+  validates_presence_of :picture, :user_id, :service_id
+
   mount_uploader :picture, AvatarUploader
   process_in_background :picture
+
 
 end
