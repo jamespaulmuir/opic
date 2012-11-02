@@ -1,0 +1,132 @@
+// Helper classes
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; }
+
+.clearfix {
+  &:before {
+    content: "";
+    display: table; }
+  &:after {
+    content: "";
+    display: table;
+    clear: both; }
+  *zoom: 1; }
+
+// OSU nav bar
+#osu-nav-bar-outer {
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+  padding: 10px 11px 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  &:before { // This won't show up in IE 7, but we don't care
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 7px;
+    background: #c5c5c5 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAY4AAAAHCAMAAAAoElrqAAAAq1BMVEWYHABDQ0OVGwBOTk5KSkqKiopMTEx9fX1QUFC0tLRvb2/BwcFcXFyurq5fX1+5ubmwsLCOjo6Dg4Ofn5+oqKi/v7+cnJySkpJra2u9vb2AgIC7u7tGRkaYmJhhYWGioqLCwsKGhoaVlZV5eXl1dXVTU1NycnK3t7dXV1dnZ2dISEhYWFimpqZFRUVlZWWrq6vR1Nbw8fHj5ObHzc+sq6v29vbq6+va3N5mZWW+Mpw3AAAAbklEQVRIS2NgYoACOGMUUA+YMjLqymixsDFzqGpo8/DJWWhKcKmpKLNLCSmyCooryYoJy+uImPAKcKrzS0uKciswjEYHLYEhWnToYYsO/dHooBMwG42OwQSMRqNjMAHz0egYTMBgNDoGEzAmMToAGrcgZewLRykAAAAASUVORK5CYII=) no-repeat bottom left; } }
+
+.osu-semantic {
+  position: absolute;
+  left: 0;
+  top: -500px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  text-align: center;
+  &:active, &:focus {
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: visible; } }
+
+#skip {
+  &:active, &:focus {
+    position: absolute;
+    top: 0;
+    left: 25%;
+    width: 50%;
+    padding: 0.5em 0 1.5em;
+    display: block;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    z-index: 99;
+    background: #686868;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px dotted #cccccc;
+    border-top: none; } }
+
+#osu-site-title {
+  font-size: 15px;
+  margin: 0;
+  float: left;
+  a {
+    color: #3d3d3d;
+    white-space: nowrap;
+    &:hover, &:focus {
+      border-bottom: 1px solid #3d3d3d;
+      text-decoration: none; }
+    &:before {
+      content: "\25B8";
+      font-size: 14px;
+      color: #777777;
+      padding: 0 5px 0 1px;
+      border-bottom: 1px solid #eaebeb; }
+    &:first-child {
+      color: #990000;
+      font-weight: bold;
+      &:hover, &:focus {
+        border-bottom: 1px solid #990000; }
+      &:before {
+        content: "";
+        padding: 0; } } } }
+
+#osu-nav-primary {
+  float: right;
+  font-size: 12px;
+  margin-top: 2px;
+  h3 {
+    position: absolute;
+    left: -999em; }
+  ul {
+    margin: 0; }
+  li {
+    display: inline;
+    margin: 0; }
+  a {
+    color: #3d3d3d;
+    padding: 0 0 0 12px;
+    &:hover, &:active, &:focus {
+      text-decoration: underline;
+      border: none; } } }
+
+@media only screen and (max-width: 979px) { // Floats the navigation links left
+  #osu-nav-primary {
+    float: left;
+    clear: left;
+    a {
+      padding: 0 12px 0 0; } } }
+
+@media only screen and (max-width: 500px) { // Drops the navigation links back into a vertical list
+  #osu-nav-primary li {
+    display: list-item;
+    list-style: none;
+    margin-top: 5px;
+    &:first-child {
+      margin-top: 0; } } }
+
+@media only screen and (max-width: 400px) { // Changes the red bar background into a solid red color
+#osu-nav-bar-outer {
+  &:before {
+    background: #981c00; } } }
