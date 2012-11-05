@@ -21,6 +21,7 @@
 
     .container
       = render('layouts/partials/osu-nav-bar.html')
+      -# Alert for older versions of IE
       /[if lt IE 9]
         .alert.alert-block.alert-error
           %a.close{"data-dismiss" => "alert"}
