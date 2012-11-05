@@ -1,10 +1,10 @@
 !!! 5
 -# paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
-<!--[if lt IE 7]> <html lang="en" class="no-js ie6"> <![endif]-->
-<!--[if IE 7]>    <html lang="en" class="no-js ie7"> <![endif]-->
-<!--[if IE 8]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if lt IE 7]> <html lang="en" class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html lang="en" class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html lang="en" class="lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-%html.no-js{ :lang => "en" }
+%html{ :lang => "en" }
   <!--<![endif]-->
   %head
     %meta(charset="utf-8")
@@ -21,6 +21,28 @@
 
     .container
       = render('layouts/partials/osu-nav-bar.html')
+      /[if lt IE 9]
+        .alert.alert-block.alert-error
+          %a.close{"data-dismiss" => "alert"}
+            x
+          %h4.alert-heading
+            Warning!
+          Your browser is <em>
+          <![if IE 8]>
+          old!</em> It was released in 2009!
+          <![endif]> 
+          <![if IE 7]>
+          ancient!</em> It was released in 2006!
+          <![endif]> 
+          <![if lte IE 6]>
+          ancient!</em> It was released in 2001!
+          <![endif]> 
+          %a{:href => "http://browsehappy.com/"}
+            Upgrade to a different browser
+          or
+          %a{:href=> "http://www.google.com/chromeframe/?redirect=true"}
+            install Google Chrome Frame
+          to properly experience this site.
       .container-fluid.inner-container
         .row-fluid
           .span12.header-container
