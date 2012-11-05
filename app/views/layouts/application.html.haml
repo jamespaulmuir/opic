@@ -46,11 +46,10 @@
       .container-fluid.inner-container
         .row-fluid
           .span12.header-container
-            %h1
-              = link_to 'Welcome to Opic!', root_url, :title => "An Ohio State University Avatar Service"
-              %small= link_to 'An Ohio State University Avatar Service', root_url
+            %h1= link_to 'Welcome to Opic!', root_url, :title => "An Ohio State University Avatar Service"
+            %p= link_to 'An Ohio State University Avatar Service', root_url
         .row-fluid
-          .span12.body-container
+          .span12
             = bootstrap_flash
             = yield
       .container-fluid.footer-container
