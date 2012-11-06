@@ -1,41 +1,30 @@
 - content_for(:title, 'Information for Developers')
 
-.page-header
-  %h2 Image requests
-
-.row-fluid
-  .span4
-    %h4 Basic Request
-
-    %p Request a user's picture using their OSU name.#:
-
-    %p
-      %code #{root_url}butsko.7
-
-  .span4
-    %h4 Width
-
-    %p
-      You can request image widths from 50 to 400 pixels in 50 pixel increments by sending a
-      %code width
-      parameter.
-
-    %p
-      %code #{root_url}butsko.7?width=200
-
-  .span4
-    %h4 Aspect
-
-    %p
-      By default, opics are square. Pictures are also available in a 4:3 potrait aspect ratio. These can be requested by setting the 
-      %code aspect
-      parameter to p.
-
-    %p
-      %code #{root_url}butsko.7?aspect=p
-
-    %p
-      This works in combination with the width parameter:
-
-    %p
-      %code #{root_url}butsko.7?aspect=p&width=350
+.one-column
+  %h2 Image Requests
+  %hr
+  .row-fluid
+    .span4
+      %h3 Basic Request
+      %p Request a user's picture using their OSU name.#:
+      %p
+        %code #{root_url}butsko.7
+    .span4
+      %h3 Width
+      %p
+        You can request image widths from 50 to 400 pixels in 50 pixel increments by sending a
+        %code width
+        parameter.
+      %p
+        %code #{root_url}butsko.7?width=200
+    .span4
+      %h3 Aspect
+      %p
+        By default, Opics are square. Pictures are also available in a 4:3 potrait aspect ratio. These can be requested by setting the 
+        %code aspect
+        parameter to p.
+      %p
+        %code #{root_url}butsko.7?aspect=p
+      %p This works in combination with the width parameter:
+      %p
+        %code #{root_url}butsko.7?aspect=p&width=350
