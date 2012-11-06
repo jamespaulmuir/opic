@@ -1,7 +1,9 @@
-= simple_form_for(@avatar, :html => { :class => "form-horizontal" } ) do |f|
-  = f.file_field :picture
-  = f.submit 'Update opic'
+%h4 Update your Opic
+= simple_form_for(@avatar, :html => { :class => "update-your-opic" } ) do |f|
+  = f.file_field :picture, :class => 'input-block-level file-field'
+  = f.button :submit, 'Update Opic'
 
-= simple_form_for(@avatar, :html => { :class => "form-horizontal" } ) do |f|
-  = f.text_field :remote_picture_url
-  = f.submit 'Fetch Remote opic'
+%h4 Fetch Remote Opic
+= simple_form_for(@avatar, :html => { :class => "fetch-remote" } ) do |f|
+  = f.text_field :remote_picture_url, :class => 'input-block-level'
+  = f.button :submit, 'Fetch Remote Opic'
