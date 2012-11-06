@@ -28,6 +28,11 @@
   @if $point == large-desktop {
     @media (min-width: 1200px) { @content; } } }
 
+// Bootstrap overrides
+hr {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #eee; }
+
 // Opic styles
 body {
   background: #dbdbdb url("body-background.png"); }
