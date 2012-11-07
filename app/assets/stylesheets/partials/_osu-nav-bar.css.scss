@@ -125,7 +125,11 @@
   display: none; }
 
 @media only screen and (max-width: 500px) { // Drop the navigation links back into a vertical list
-  
+
+  #osu-nav-bar-outer { // Changes the red bar background into a solid red color
+    &:before {
+      background: #981c00; } }
+
   #osu-site-title {
     margin-bottom: 12px; }
 
@@ -159,8 +163,3 @@
 
   .osu-nav-bar-main-navigation ul {
     display: none; } }
-
-@media only screen and (max-width: 400px) { // Changes the red bar background into a solid red color
-#osu-nav-bar-outer {
-  &:before {
-    background: #981c00; } } }
