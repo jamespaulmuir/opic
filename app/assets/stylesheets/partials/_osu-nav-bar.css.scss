@@ -96,9 +96,6 @@
   float: right;
   font-size: 12px;
   margin-top: 2px;
-  h3 {
-    position: absolute;
-    left: -999em; }
   ul {
     margin: 0; }
   li {
@@ -111,20 +108,57 @@
       text-decoration: underline;
       border: none; } } }
 
-@media only screen and (max-width: 979px) { // Floats the navigation links left
+// 
+@media only screen and (max-width: 979px) { // Float the navigation links left
   #osu-nav-primary {
     float: left;
     clear: left;
     a {
       padding: 0 12px 0 0; } } }
 
-@media only screen and (max-width: 500px) { // Drops the navigation links back into a vertical list
-  #osu-nav-primary li {
-    display: list-item;
-    list-style: none;
-    margin-top: 5px;
-    &:first-child {
-      margin-top: 0; } } }
+// Small menu 
+.menu-toggle {
+  display: none;
+  cursor: pointer; }
+
+.osu-nav-bar-small-navigation .menu {
+  display: none; }
+
+@media only screen and (max-width: 500px) { // Drop the navigation links back into a vertical list
+  
+  #osu-site-title {
+    margin-bottom: 12px; }
+
+  #osu-nav-primary {
+    float: none;
+    li {
+      display: list-item;
+      list-style: none; }
+    a {
+      display: block;
+      padding: 5px 10px;
+      background: rgba(242, 242, 241, .5);
+      &:hover,
+      &:focus,
+      &:active {
+        background: rgba(242, 242, 241, .9); } }
+    .even {
+      a {
+        background: rgba(249, 249, 247, .5); }
+        &:hover,
+        &:focus,
+        &:active {
+          background: rgba(249, 249, 247, .9); } } }
+
+  .menu-toggle {
+    margin-bottom: 8px; }
+
+  .menu-toggle,
+  .osu-nav-bar-small-navigation ul.nav-menu.toggled-on {
+    display: block; }
+
+  .osu-nav-bar-main-navigation ul {
+    display: none; } }
 
 @media only screen and (max-width: 400px) { // Changes the red bar background into a solid red color
 #osu-nav-bar-outer {

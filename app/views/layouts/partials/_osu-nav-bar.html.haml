@@ -1,14 +1,14 @@
 #osu-nav-bar-outer
   #osu-nav-bar-inner.clearfix
     %h2.visuallyhidden OSU Navigation Bar
-    = link_to 'Skip to main content', '#main-content', :id => 'skip', :class => 'osu-semantic'
+    = link_to 'Skip to main content', '#content-container', :id => 'skip', :class => 'osu-semantic'
     %p#osu-site-title
       = link_to 'The Ohio State University', 'http://www.osu.edu/', :title => "The Ohio State University homepage"
       = link_to 'Opic Avatar Service', root_url, :title => "An Ohio State University Avatar Service"
-    #osu-nav-primary
-      %h3 Links:
-      %ul
-        %li.nav-current= link_to 'Help',  'http://www.osu.edu/help.php',  :title => "OSU Help"
+    %nav#osu-nav-primary.osu-nav-bar-main-navigation
+      %h3.btn.visuallyhidden OSU Navigation Bar Links
+      %ul.menu
+        %li= link_to 'Help',  'http://www.osu.edu/help.php',  :title => "OSU Help"
         %li.even= link_to 'Buckeye Link', 'http://buckeyelink.osu.edu/', :title => "Buckeye Link"
         %li= link_to 'Map', 'http://www.osu.edu/map/',  :title => "Campus map"
         %li.even= link_to 'Find People',  'http://www.osu.edu/findpeople.php', :title => "Find people at OSU"

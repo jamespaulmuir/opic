@@ -107,7 +107,7 @@ body { // Brutus Buckeye overlay
       color: #fff; } } }
 
 // Both columns
-.content-container {
+#content-container {
   a:link,
   a:visited {
     color: #900; }
@@ -184,6 +184,6 @@ body { // Brutus Buckeye overlay
       &:first-child {
         float: none; } } } }
 
-
+// Login form? Are some of these unneeded?
 label.password { font-size:1.1em; }
 input.password { font-size:1.6em; width:90%; height:28px;}
