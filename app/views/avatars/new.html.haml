@@ -27,8 +27,10 @@
         %p.gravatar-attribution= "Pulled from #{link_to 'Gravatar.com', 'http://gravatar.com'} for #{current_user.email}".html_safe
         %p.gravatar-link= link_to "Make my Gravatar my Opic", use_gravatar_path, :method => :post, :class => "btn"
     - else
-      %h3 Opt Out of Opic
-      = link_to "Opt Out of Opic Service", opt_out_path, :method => :put, :class => "btn"
+      %h3
+        Opt Out of Opic
+        %small Discontinue your use of the service
+      = link_to "Opt Out of Opic", opt_out_path, :method => :put, :class => "btn"
     %h2 Frequently Asked Questions
     %hr
     %h3 What is an avatar?

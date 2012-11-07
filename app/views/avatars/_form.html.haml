@@ -1,9 +1,13 @@
-%h3 Update your Opic
+%h3
+  Update your Opic
+  %small Upload an image from your computer
 = simple_form_for(@avatar, :html => { :class => "update-your-opic" } ) do |f|
   = f.file_field :picture, :class => 'input-block-level file-field'
   = f.button :submit, 'Update Opic'
 
-%h3 Fetch Remote Opic
+%h3
+  Fetch Remote Opic
+  %small Get an image remotely from a URL
 = simple_form_for(@avatar, :html => { :class => "fetch-remote" } ) do |f|
   = f.text_field :remote_picture_url, :class => 'input-block-level'
   = f.button :submit, 'Fetch Remote Opic'
