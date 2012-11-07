@@ -1,37 +1,62 @@
 !!! 5
-%html(lang="en")
+-# paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+<!--[if lt IE 7]> <html lang="en" class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html lang="en" class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html lang="en" class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+%html{ :lang => "en" }
+  <!--<![endif]-->
   %head
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    %title= content_for?(:title) ? yield(:title) : "Opic"
+    %title= "#{content_for?(:title) ? yield(:title) : 'An Ohio State University Avatar Service'} | Opic"
     = csrf_meta_tags
-    / Le HTML5 shim, for IE6-8 support of HTML elements
+    -# Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "application", :media => "all"
-    %link(href="images/apple-touch-icon-144x144.png" rel="apple-touch-icon-precomposed" sizes="144x144")
-    %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114")
-    %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72")
-    %link(href="images/apple-touch-icon.png" rel="apple-touch-icon-precomposed")
-
 
   %body
 
     .container
-
-      .content
-        .row
-          .span8.offset2.prepend2.box
-            = bootstrap_flash
+      = render('layouts/partials/osu-nav-bar.html')
+      -# Alert for older versions of IE
+      /[if lt IE 9]
+        .alert.alert-block.alert-error
+          %a.close{"data-dismiss" => "alert"}
+            x
+          %h4.alert-heading
+            Warning!
+          Your browser is <em>
+          <![if IE 8]>
+          old!</em> It was released in 2009!
+          <![endif]> 
+          <![if IE 7]>
+          ancient!</em> It was released in 2006!
+          <![endif]> 
+          <![if lte IE 6]>
+          ancient!</em> It was released in 2001!
+          <![endif]> 
+          %a{:href => "http://browsehappy.com/"}
+            Upgrade to a different browser
+          or
+          %a{:href=> "http://www.google.com/chromeframe/?redirect=true"}
+            install Google Chrome Frame
+          to properly experience this site.
+      .container-fluid.inner-container
+        .row-fluid
+          .span12.header-container
+            %h1= link_to 'Welcome to Opic!', root_url, :title => "An Ohio State University Avatar Service"
+            %p= link_to 'An Ohio State University Avatar Service', root_url
+        .row-fluid#content-container
+          .span12
             = yield
-        .row
-          .span8.offset2.prepend2.box
+      .container-fluid.footer-container
+        .row-fluid
+          .span12
             %footer
-              %p.pull-left &copy; ASC Technology Services 2012
-              %p.pull-right= link_to 'Developers', developers_url
-    /
-      Javascripts
-      \==================================================
-    / Placed at the end of the document so the pages load faster
+              %p &copy; #{Time.now.year}, ASC Technology Services. All rights reserved.
+              %p= link_to 'Information for Developers', developers_url
+    
     = javascript_include_tag "application"
