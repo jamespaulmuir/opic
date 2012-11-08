@@ -9,6 +9,7 @@ Opic::Application.routes.draw do
   root :to => 'avatars#new'
 
   get '/developers' => 'pages#developers'
+  get '/faq' => 'pages#faq'
  
   post '/api/avatars' => 'api#create'
 

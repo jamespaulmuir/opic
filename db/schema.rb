@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(:version => 20121004190012) do
     t.integer  "user_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
-    t.string   "remote_picture"
     t.string   "remote_picture_url"
     t.boolean  "gravatar"
     t.integer  "service_id"

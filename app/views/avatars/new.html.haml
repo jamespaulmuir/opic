@@ -1,43 +1,29 @@
 .row-fluid
-  .span4.left-column
+  .span3.left-column
+    %h2 Your Opic
     - if @current_avatar.present?
-      %h2 Your Opic:
       = image_tag @current_avatar.picture.p400, :class => "image-border"
-      %p This is your current Opic.
-    - elsif current_user.opted_out?
-      %h2 Your Default Opic:
+      %p This is your current Opic
+    - else
       = image_tag default_url, :class => "image-border"
-      %p Your current Opic is the default Brutus avatar.
-    - elsif current_user.has_gravatar?
-      %h2 Your Gravatar:
-      = image_tag current_user.gravatar_url(:default => default_url, :size => 400), :class => "image-border"
-      %p.gravatar-attribution= "Pulled from #{link_to 'Gravatar.com', 'http://gravatar.com'} for #{current_user.email}".html_safe
-      %p.gravatar-link= link_to "Make my Gravatar my Opic", use_gravatar_path, :method => :post, :class => "btn"
-    - else
-      %h2 You have no Opic!
-  .span8.right-column
+      %p This is the default avatar
+  .span9.right-column
     = bootstrap_flash
-    %h2 Manage your Opic
-    %hr
-    = render 'form'
-    - if current_user.opted_out?
+    #opic-actions
+      %h2 Manage your Opic
+      %hr
+      = render 'form'
       - if current_user.has_gravatar?
-        %h3 Make my Gravatar my Opic
-        = image_tag current_user.gravatar_url(:default => default_url, :size => 150), :class => "image-border"
-        %p.gravatar-attribution= "Pulled from #{link_to 'Gravatar.com', 'http://gravatar.com'} for #{current_user.email}".html_safe
-        %p.gravatar-link= link_to "Make my Gravatar my Opic", use_gravatar_path, :method => :post, :class => "btn"
-    - else
-      %h3
-        Opt Out of Opic
-        %small Discontinue your use of the service
-      = link_to "Opt Out of Opic", opt_out_path, :method => :put, :class => "btn"
-    %h2 Frequently Asked Questions
-    %hr
-    %h3 What is an avatar?
-    %p It’s the image that appears beside your name when you post on blogs, forums, or use web services in general. In short, it’s what identifies you as being uniquely you as you browse the web.
-    %h3 How do I get an avatar?
-    %p Easy! Upload an image of your choice here via the following form. That image will then become your avatar and you’ll increasingly see it used throughout the university’s web presence.
-    %h3 But I already have a Gravatar
-    %p= "You're in the vanguard! If you already have an account with #{link_to 'Gravatar', 'http://www.gravatar.com/'}  or #{link_to 'Wordpress.com', 'http://www.wordpress.com/'}, we’ll import that avatar so long as the account is associated your OSU email address.".html_safe
-    %h3 What if I don’t want an avatar?
-    %p If you aren’t sold on the benefits of having an avatar, you may opt out and we’ll use an image of Brutus to represent you. Don’t worry, though as you may change your mind and add an avatar anytime in the future!
+        .span3
+          .thumbnail
+            Use your gravatar
+            #gravatar-circle= image_tag current_user.gravatar_url(:default => default_url, :size => 150), :width => 92
+            %p
+              %small Import your gravatar
+
+      .span3
+        .thumbnail
+          Opt Out of Opic
+          = image_tag 'opt_out.png'
+          %p
+            %small Opt out of this service
