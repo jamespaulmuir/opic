@@ -1,5 +1,5 @@
 = bootstrap_flash
-#opic-actions
+#opic-actions.clearfix
   - if current_user.opted_out?
     .alert.alert-error
       .clearfix
@@ -10,7 +10,22 @@
       .clearfix= link_to 'Opt back in', opt_in_path, :method => :put, :class => 'btn btn-large btn-primary'
 
   - else
-    = render 'form'
+    .span3
+      %a.show_hide{ href: '#', rel: '#upload-opic-form'}
+        .thumbnail
+          %strong Update your Opic
+          = image_tag 'upload.png'
+          %p
+            %small Upload from your computer
+
+    .span3
+      %a.show_hide{ href: '#', rel: '#remote-opic-form'}
+        .thumbnail
+          %strong Fetch Remote Opic
+          = image_tag 'remote.png'
+          %p
+            %small Get an image from a URL
+
     - if current_user.has_gravatar?
       .span3
         = link_to use_gravatar_path, :method => :post do
@@ -27,3 +42,16 @@
           = image_tag 'opt_out.png'
           %p
             %small Opt out of this service
+
+    .clearfix
+      #upload-opic-form
+        %h3 Upload a picture
+        = simple_form_for(@avatar, :html => { :class => "update-your-opic" } ) do |f|
+          = f.file_field :picture, :class => 'input-block-level file-field'
+          = f.button :submit, 'Update Opic'
+
+      #remote-opic-form
+        %h3 Insert the URL of a picture
+        = simple_form_for(@avatar, :html => { :class => "fetch-remote" } ) do |f|
+          = f.text_field :remote_picture_url, :class => 'input-block-level'
+          = f.button :submit, 'Fetch Remote Opic'
