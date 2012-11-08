@@ -1,5 +1,6 @@
 class AvatarsController < ApplicationController
   before_filter :require_shibboleth
+  layout 'manage'
 
   def new
     @current_avatar = current_user.avatars.last if current_user.avatars.present?

@@ -51,22 +51,7 @@
             %p= link_to 'The Ohio State University Avatar Service', root_url
         .row-fluid#content-container
           .span12
-            .row-fluid
-              .span3.left-column
-                %h2 Your Opic
-                - @current_avatar = current_user.avatars.last if current_user.avatars.present?
-                - if @current_avatar.present?
-                  = image_tag @current_avatar.picture.p400, :class => "image-border"
-                  %p This is your current Opic
-                - else
-                  = image_tag default_url, :class => "image-border"
-                  %p This is the default avatar
-              .span9.right-column
-                %ul.nav.nav-tabs
-                  %li{ :class => current_page?(root_url) ? 'active' : '' }= link_to 'Manage Opic', root_url
-                  %li{ :class => current_page?(faq_url) ? 'active' : '' }= link_to 'FAQ', faq_url
-                  
-                = yield
+            = content_for?(:content) ? yield(:content) : yield
       .container-fluid.footer-container
         .row-fluid
           .span12
