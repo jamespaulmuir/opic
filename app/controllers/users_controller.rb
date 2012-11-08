@@ -6,4 +6,9 @@ class UsersController < ApplicationController
     redirect_to root_url, :notice => "You have successfully opted out."
   end
 
+  def opt_in
+    current_user.opt_in!
+    redirect_to root_url, :notice => "You have successfully opted in."
+  end
+
 end

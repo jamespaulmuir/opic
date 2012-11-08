@@ -1,19 +1,29 @@
 = bootstrap_flash
 #opic-actions
-  = render 'form'
-  - if current_user.has_gravatar?
-    .span3
-      = link_to use_gravatar_path, :method => :post do
-        .thumbnail
-          %strong Use your gravatar
-          #gravatar-circle= image_tag current_user.gravatar_url(:default => default_url, :size => 150), :width => 92
-          %p
-            %small Import your gravatar
+  - if current_user.opted_out?
+    .alert.alert-error
+      .clearfix
+        .pull-left= image_tag 'opt_out.png'
+        .pull-left
+          %h3 You are opted out of opic
+          A default image will be served in place of your image
+      .clearfix= link_to 'Opt back in', opt_in_path, :method => :put, :class => 'btn btn-large btn-primary'
 
-  .span3
-    = link_to opt_out_path, :method => :put do
-      .thumbnail
-        %strong Opt Out of Opic
-        = image_tag 'opt_out.png'
-        %p
-          %small Opt out of this service
+  - else
+    = render 'form'
+    - if current_user.has_gravatar?
+      .span3
+        = link_to use_gravatar_path, :method => :post do
+          .thumbnail
+            %strong Use your gravatar
+            #gravatar-circle= image_tag current_user.gravatar_url(:default => default_url, :size => 150), :width => 92
+            %p
+              %small Import your gravatar
+
+    .span3
+      = link_to opt_out_path, :method => :put do
+        .thumbnail
+          %strong Opt Out of Opic
+          = image_tag 'opt_out.png'
+          %p
+            %small Opt out of this service

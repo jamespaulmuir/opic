@@ -5,6 +5,7 @@ Opic::Application.routes.draw do
   post '/use_gravatar'  => 'avatars#use_gravatar'
 
   put '/opt_out'      =>  'users#opt_out'
+  put '/opt_in'       =>  'users#opt_in'
 
   root :to => 'avatars#new'
 
