@@ -1,6 +1,10 @@
 class PicturesController < ApplicationController
   require 'net/http'
 
+  def index
+    @pictures = Avatar.all
+  end
+
   def show
     name_n = params[:name_n].to_s.strip.downcase
     hashed_name_n = params[:hash].to_s.strip.downcase
