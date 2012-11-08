@@ -1,29 +1,17 @@
-.row-fluid
-  .span3.left-column
-    %h2 Your Opic
-    - if @current_avatar.present?
-      = image_tag @current_avatar.picture.p400, :class => "image-border"
-      %p This is your current Opic
-    - else
-      = image_tag default_url, :class => "image-border"
-      %p This is the default avatar
-  .span9.right-column
-    = bootstrap_flash
-    #opic-actions
-      %h2 Manage your Opic
-      %hr
-      = render 'form'
-      - if current_user.has_gravatar?
-        .span3
-          .thumbnail
-            Use your gravatar
-            #gravatar-circle= image_tag current_user.gravatar_url(:default => default_url, :size => 150), :width => 92
-            %p
-              %small Import your gravatar
+= bootstrap_flash
+#opic-actions
+  = render 'form'
+  - if current_user.has_gravatar?
+    .span3
+      .thumbnail
+        %strong Use your gravatar
+        #gravatar-circle= image_tag current_user.gravatar_url(:default => default_url, :size => 150), :width => 92
+        %p
+          %small Import your gravatar
 
-      .span3
-        .thumbnail
-          Opt Out of Opic
-          = image_tag 'opt_out.png'
-          %p
-            %small Opt out of this service
+  .span3
+    .thumbnail
+      %strong Opt Out of Opic
+      = image_tag 'opt_out.png'
+      %p
+        %small Opt out of this service
