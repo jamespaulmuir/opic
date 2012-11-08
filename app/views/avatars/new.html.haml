@@ -43,15 +43,16 @@
           %p
             %small Opt out of this service
 
-    .clearfix
-      #upload-opic-form
-        %h3 Upload a picture
-        = simple_form_for(@avatar, :html => { :class => "update-your-opic" } ) do |f|
-          = f.file_field :picture, :class => 'input-block-level file-field'
-          = f.button :submit, 'Update Opic'
+    .row
+      .span12
+        #upload-opic-form
+          %h3 Upload a picture
+          = simple_form_for(@avatar, :html => { :class => "update-your-opic" } ) do |f|
+            = f.file_field :picture, :class => 'input-block-level file-field'
+            = f.button :submit, 'Update Opic'
 
-      #remote-opic-form
-        %h3 Insert the URL of a picture
-        = simple_form_for(@avatar, :html => { :class => "fetch-remote" } ) do |f|
-          = f.text_field :remote_picture_url, :class => 'input-block-level'
-          = f.button :submit, 'Fetch Remote Opic'
+        #remote-opic-form
+          %h3 Insert the URL of a picture
+          = simple_form_for(@avatar, :html => { :class => "fetch-remote" } ) do |f|
+            = f.text_field :remote_picture_url, :class => 'input-block-level'
+            = f.button :submit, 'Fetch Remote Opic'
