@@ -57,6 +57,9 @@
           .span12
             %footer
               %p &copy; #{Time.now.year}, ASC Technology Services. All rights reserved.
-              %p= link_to 'Information for Developers', developers_url
+              %p
+                = link_to 'About Opic', about_url
+                |
+                = link_to 'Information for Developers', developers_url
     
     = javascript_include_tag "application"
