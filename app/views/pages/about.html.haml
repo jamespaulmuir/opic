@@ -1,0 +1,22 @@
+- content_for(:title, 'About Opic')
+
+%h2 About Opic
+
+.row
+  .span4
+    %h4 Inspiration
+    Opic is inspired by #{link_to 'Gravatar', 'http://gravatar.com'}. It allows us to include pictures in our apps and websites without duplicating work in each of them while offering a self-service, centralized and easy to use picture service for the university.
+
+  .span4
+    %h4 Collaboration
+    Opic was built and is maintained by the ASCTech Web and Data Solutions team. The OSU Libraries team graciously offered some of their designer's time to give Opic a great look and experience.
+
+  .span4
+    %h4 Opic Collaborators
+    - @collaborators_hash.each do |email, name|
+      - next unless email.ends_with?('@osu.edu')
+      - name_n = email.gsub('@osu.edu', '')
+
+      .clearfix
+        = image_tag "http://opic.osu.edu/#{name_n}?width=150", alt: "Opic avatar for #{name}"
+        %strong= name
