@@ -14,6 +14,7 @@
     %ul.nav.nav-tabs
       %li{ :class => current_page?(root_url) ? 'active' : '' }= link_to 'Manage Opic', root_url
       %li{ :class => current_page?(faq_url) ? 'active' : '' }= link_to 'FAQ', faq_url
+    = bootstrap_flash
     = yield
 
 = render :template => 'layouts/application'
