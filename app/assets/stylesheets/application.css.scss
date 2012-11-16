@@ -36,6 +36,12 @@ hr {
 h2 {
   color: #3c2e2e; }
 
+// Helper classes
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-justify { text-align: justify; }
+
 // Opic styles
 html { // Tiling background, I would make this base64, but it's too big for IE 8
   min-height: 100%;
