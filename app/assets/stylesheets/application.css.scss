@@ -247,4 +247,5 @@ input.password { font-size:1.6em; width:90%; height:28px;}
 }
 @import "partials/mixins"; // SASS mixins
 @import "partials/footer";
+@import "partials/high-dpi-styles"; // Support for high DPI or retina displays
 @import "partials/ie"; // Support for legacy versions of Internet Explorer
