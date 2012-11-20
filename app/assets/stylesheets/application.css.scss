@@ -14,19 +14,6 @@
 
 @import "partials/helper-classes";
 @import "partials/osu-nav-bar";
-// Mixins
-@mixin breakpoint($point) {
-  @if $point == mobile {
-    @media (max-width: 479px) { @content; } }
-  @if $point == tablet {
-    @media (max-width: 767px) { @content; } }
-  @if $point == larger-than-tablet {
-    @media (min-width: 768px) { @content; } }
-  @if $point == desktop {
-    @media (min-width: 768px) and (max-width: 979px) { @content; } }
-  @if $point == large-desktop {
-    @media (min-width: 1200px) { @content; } } }
-
 // Bootstrap overrides
 hr {
   border-top: 1px solid #ddd;
@@ -258,5 +245,6 @@ input.password { font-size:1.6em; width:90%; height:28px;}
 .span3.left-column p {
   text-align: center;
 }
+@import "partials/mixins"; // SASS mixins
 @import "partials/footer";
 @import "partials/ie"; // Support for legacy versions of Internet Explorer
