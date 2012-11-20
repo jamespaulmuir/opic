@@ -1,7 +1,7 @@
 - content_for :content do
 
   .span4.left-column
-    %h2 Your Opic
+    %h3 Your Opic
     - @current_avatar = current_user.avatars.last if current_user.avatars.present?
     - if @current_avatar.present?
       = image_tag @current_avatar.picture.p400, :class => "image-border"
