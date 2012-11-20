@@ -1,19 +1,18 @@
 - content_for :content do
 
-  .span3.left-column
-    %h2 Your Opic
+  .span4.left-column
+    %h3 Your Opic
     - @current_avatar = current_user.avatars.last if current_user.avatars.present?
     - if @current_avatar.present?
       = image_tag @current_avatar.picture.p400, :class => "image-border"
-      %p This is your current Opic
     - else
       = image_tag default_url, :class => "image-border"
-      %p This is the default avatar
 
-  .span9.right-column
-    %ul.nav.nav-tabs
-      %li{ :class => current_page?(root_url) ? 'active' : '' }= link_to 'Manage Opic', root_url
-      %li{ :class => current_page?(faq_url) ? 'active' : '' }= link_to 'FAQ', faq_url
+  .span8.right-column
+    = bootstrap_flash
+    %ul.nav.nav-tabs.opic-tabs
+      %li{ :class => current_page?(root_url) ? 'active' : '' }= link_to content_tag(:h2, 'Manage Opic'), root_url
+      %li{ :class => current_page?(faq_url) ? 'active' : '' }= link_to content_tag(:h2, 'FAQ'), faq_url
     = yield
 
 = render :template => 'layouts/application'

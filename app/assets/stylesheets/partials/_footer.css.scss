@@ -1,0 +1,17 @@
+@import "partials/mixins";
+
+.footer-container {
+  padding: 1.5em;
+  p {
+    float: right;
+    &:first-child {
+      float: left; } }
+  a {
+    color: inherit; }
+  @include breakpoint(tablet) { // Center align everything
+    padding: 1.5em 0.5em;
+    text-align: center;
+    p {
+      float: none;
+      &:first-child {
+        float: none; } } } }
