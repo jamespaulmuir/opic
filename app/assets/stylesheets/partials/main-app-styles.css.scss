@@ -137,15 +137,14 @@ body { // Brutus Buckeye overlay
   box-shadow: 0 0 3em 0 #dbe0da;
   @include breakpoint(tablet) {
     padding: 2em; }
-  @include breakpoint(tablet) {
+  @include breakpoint(mobile) {
     padding: 1em; }
   @include breakpoint(larger-than-tablet) { // To accomodate the pseudo element background to fake full equal height columns
     background: none;
     box-shadow: none; }
   h2 {
-    margin-top: 44px;
-    &:first-child {
-      margin-top: 10px; } }
+    @include breakpoint(mobile) {
+      font-size: 28px; } }
   hr {
     margin: 6px 0; }
   h3 {
