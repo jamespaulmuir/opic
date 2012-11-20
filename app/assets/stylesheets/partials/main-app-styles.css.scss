@@ -164,6 +164,14 @@ body { // Brutus Buckeye overlay
   background: #fff;
   border: 1px solid #DDD;
   border-top: none;
+  a {
+    &:link,
+    &:visited {
+      color: #900; }
+    &:hover,
+    &:active,
+    &:focus {
+      color: #700; } }
   .well {
     text-align: center;
     @include breakpoint(desktop) {
