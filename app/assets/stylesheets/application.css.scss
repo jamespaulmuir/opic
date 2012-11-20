@@ -13,9 +13,6 @@
  */
 
 @import "partials/osu-nav-bar";
-@import "partials/ie";
-
-
 // Mixins
 @mixin breakpoint($point) {
   @if $point == mobile {
@@ -265,3 +262,4 @@ input.password { font-size:1.6em; width:90%; height:28px;}
 .span3.left-column p {
   text-align: center;
 }
+@import "partials/ie"; // Support for legacy versions of Internet Explorer
