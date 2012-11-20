@@ -11,14 +11,16 @@
   - else
     .row-fluid
       .span6.well
-        %a.show_hide{ href: '#', rel: '#upload-opic-form'}
+        - modal_id_1 = "m#{rand(100000).to_s}"
+        = link_to "##{modal_id_1}", data: { toggle: "modal", backdrop: true } do
           %h4 Update your Opic
           %i#upload-opic.ir
           %p
             %small Upload from your computer
 
       .span6.well
-        %a.show_hide{ href: '#', rel: '#remote-opic-form'}
+        - modal_id_2 = "m#{rand(100000).to_s}"
+        = link_to "##{modal_id_2}", data: { toggle: "modal", backdrop: true } do
           %h4 Fetch Remote Opic
           %i#fetch-remote-opic.ir
           %p
@@ -40,16 +42,18 @@
           %p
             %small Opt out of this service
 
-    .row
-      .span12
-        #upload-opic-form
-          %h3 Upload a picture
-          = simple_form_for(@avatar, :html => { :class => "update-your-opic" } ) do |f|
-            = f.file_field :picture, :class => 'input-block-level file-field'
-            = f.button :submit, 'Update Opic'
+.modal.hide.fade{:id => modal_id_1, tabindex: "-1", role: "dialog"}
+  = simple_form_for(@avatar) do |f|
+    .modal-header
+      %a.close{ data: { dismiss: 'modal' } } &times;
+      %h3 Upload a picture
+    .modal-body= f.file_field :picture, :class => 'input-block-level file-field'
+    .modal-footer= f.button :submit, 'Update Opic', :class => 'btn btn-primary'
 
-        #remote-opic-form
-          %h3 Insert the URL of a picture
-          = simple_form_for(@avatar, :html => { :class => "fetch-remote" } ) do |f|
-            = f.text_field :remote_picture_url, :class => 'input-block-level'
-            = f.button :submit, 'Fetch Remote Opic'
+.modal.hide.fade{:id => modal_id_2, tabindex: "-1", role: "dialog"}
+  = simple_form_for(@avatar) do |f|
+    .modal-header
+      %a.close{ data: { dismiss: 'modal' } } &times;
+      %h3 Insert the URL of a picture
+    .modal-body= f.text_field :remote_picture_url, :class => 'input-block-level'
+    .modal-footer= f.button :submit, 'Fetch remote Opic', :class => 'btn btn-primary'
