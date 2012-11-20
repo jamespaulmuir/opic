@@ -1,44 +1,42 @@
 .opic-tabs-body.clearfix
   - if current_user.opted_out?
-    .alert.alert-error
-      .clearfix
-        .pull-left= image_tag 'opt_out.png'
-        .pull-left
-          %h3 You are opted out of opic
-          A default image will be served in place of your image
-      .clearfix= link_to 'Opt back in', opt_in_path, :method => :put, :class => 'btn btn-large btn-primary'
+    .media.currently-opted-out
+      .pull-left
+        %i#opt-out-opic.ir
+      .media-body
+        %h3.media-heading You are currently opted out of Opic!
+        %p The default avatar will be served in place of your Opic.
+        = link_to 'Opt back in', opt_in_path, :method => :put, :class => 'btn btn-large btn-secondary'
 
   - else
-    .span3
-      %a.show_hide{ href: '#', rel: '#upload-opic-form'}
-        .thumbnail
-          %strong Update your Opic
-          = image_tag 'upload.png'
+    .row-fluid
+      .span6.well
+        %a.show_hide{ href: '#', rel: '#upload-opic-form'}
+          %h4 Update your Opic
+          %i#upload-opic.ir
           %p
             %small Upload from your computer
 
-    .span3
-      %a.show_hide{ href: '#', rel: '#remote-opic-form'}
-        .thumbnail
-          %strong Fetch Remote Opic
-          = image_tag 'remote.png'
+      .span6.well
+        %a.show_hide{ href: '#', rel: '#remote-opic-form'}
+          %h4 Fetch Remote Opic
+          %i#fetch-remote-opic.ir
           %p
             %small Get an image from a URL
 
-    - if current_user.has_gravatar?
-      .span3
-        = link_to use_gravatar_path, :method => :post do
-          .thumbnail
-            %strong Use your gravatar
-            #gravatar-circle= image_tag current_user.gravatar_url(:default => default_url, :size => 150), :width => 92
+    .row-fluid
+      - if current_user.has_gravatar?
+        .span6.well
+          = link_to use_gravatar_path, :method => :post do
+            %h4 Use your Gravatar
+            = image_tag current_user.gravatar_url(:default => default_url, :size => 150), :width => 150, :height => 150
             %p
               %small Import your gravatar
 
-    .span3
-      = link_to opt_out_path, :method => :put do
-        .thumbnail
-          %strong Opt Out of Opic
-          = image_tag 'opt_out.png'
+      .span6.well
+        = link_to opt_out_path, :method => :put do
+          %h4 Opt Out of Opic
+          %i#opt-out-opic.ir
           %p
             %small Opt out of this service
 
