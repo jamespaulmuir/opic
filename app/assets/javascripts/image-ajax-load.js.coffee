@@ -1,15 +1,16 @@
 $ ->
+  $('#current-opic').append('<div class="progress progress-striped active"><div class="bar" style="width: 100%"></div></div>')
   window.image_source = $('img.ajax-load').attr('src')
-  $('img.ajax-load').attr('src', 'assets/ajax_loader.gif')
-
+  $('img.ajax-load').attr('src', 'assets/p400_brutus_buckeye.png')
   checkForImage()
 
 checkForImage = ->
-  $.get(image_source).success(setImageSource).error(setCheckForImageTimeout)
+  $.get(image_source).success(showImage).error(checkForImageLater)
 
-setCheckForImageTimeout = ->
+checkForImageLater = ->
   window.checkImageTimeout = setTimeout(checkForImage, 500)
 
-setImageSource = ->
+showImage = ->
   $('img.ajax-load').attr('src', image_source)
+  $('#current-opic .progress').remove()
   clearTimeout(checkImageTimeout) if checkImageTimeout?
