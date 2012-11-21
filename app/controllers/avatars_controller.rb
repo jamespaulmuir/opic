@@ -13,7 +13,7 @@ class AvatarsController < ApplicationController
   end
 
   def show
-    @avatar = current_user.avatars.last
+    redirect_to root_path
   end
 
   def create
