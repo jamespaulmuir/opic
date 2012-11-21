@@ -79,5 +79,3 @@ before "deploy:assets:precompile" do
 end
 
 after "deploy", "delayed_job:restart", "deploy:cleanup"
-
-after "deploy:create_symlink", "deploy:assets:precompile"
