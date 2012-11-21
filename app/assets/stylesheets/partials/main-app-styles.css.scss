@@ -108,7 +108,15 @@ body { // Brutus Buckeye overlay
       width: 65.81196581196582%; // .span8
       @include light-background;
       box-shadow: 0 0 3em 0 #dbe0da; } }
-  overflow: hidden; }
+  overflow: hidden;
+  a {
+    &:link,
+    &:visited {
+      color: #900; }
+    &:hover,
+    &:active,
+    &:focus {
+      color: #700; } } }
 
 // Left column
 .left-column {
@@ -161,14 +169,6 @@ body { // Brutus Buckeye overlay
   background: #fff;
   border: 1px solid #DDD;
   border-top: none;
-  a {
-    &:link,
-    &:visited {
-      color: #900; }
-    &:hover,
-    &:active,
-    &:focus {
-      color: #700; } }
   .well {
     text-align: center;
     @include breakpoint(desktop) {
@@ -240,3 +240,21 @@ body { // Brutus Buckeye overlay
 .one-column {
   padding: 3em;
   @include light-background; }
+
+// About Opic
+.about-developers {
+  margin-top: 3em;
+  text-align: center;
+  div {
+    @include breakpoint(tablet) {
+      margin-top: 3em;
+      &:first-child {
+        margin-top: 0; } } }
+  img {
+    margin-bottom: 1em;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    @include breakpoint(desktop) {
+      width: 150px;
+      height: 150px; } } }
