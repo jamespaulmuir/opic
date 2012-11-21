@@ -10,12 +10,10 @@
   %h3 Collaboration
   Opic was built and is maintained by the ASCTech Web and Data Solutions team with help from the OSU Libraries Web Implementation Team.
 
-  .row-fluid.about-developers
-    - @collaborators_hash.each do |email, name|
-      - next unless email.ends_with?('@osu.edu')
-      - name_n = email.gsub('@osu.edu', '')
-
-      .span4
-        = image_tag "http://opic.osu.edu/#{name_n}?width=400", alt: "Opic avatar for #{name}"
-        %p
-          %strong= name
+  - @collaborators_hash.each_slice(3) do |collaborators_chunk|
+    .row-fluid.about-developers
+      - collaborators_chunk.each do |email, name|
+        .span4
+          = image_tag "http://opic.osu.edu/#{email.gsub('@osu.edu', '')}?width=400", alt: "Opic avatar for #{name}"
+          %p
+            %strong= name
