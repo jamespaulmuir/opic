@@ -6,7 +6,7 @@
       .media-body
         %h3.media-heading You are currently opted out of Opic!
         %p The default avatar will be served in place of your Opic.
-        = link_to 'Opt back in', opt_in_path, :method => :put, :class => 'btn btn-large btn-secondary'
+        = link_to 'Opt back in', opt_in_path, :method => :put, :class => 'btn btn-secondary'
 
   - else
     .row-fluid
@@ -46,14 +46,14 @@
   = simple_form_for(@avatar) do |f|
     .modal-header
       %a.close{ data: { dismiss: 'modal' } } &times;
-      %h3 Upload a picture
+      %h3 Upload a Photo
     .modal-body= f.file_field :picture, :class => 'input-block-level file-field'
-    .modal-footer= f.button :submit, 'Update Opic', :class => 'btn btn-primary'
+    .modal-footer= f.button :submit, 'Update Opic', :class => 'btn btn-secondary'
 
 .modal.hide.fade{:id => modal_id_2, tabindex: "-1", role: "dialog"}
   = simple_form_for(@avatar) do |f|
     .modal-header
       %a.close{ data: { dismiss: 'modal' } } &times;
-      %h3 Insert the URL of a picture
+      %h3 Insert the URL of a Photo
     .modal-body= f.text_field :remote_picture_url, :class => 'input-block-level'
-    .modal-footer= f.button :submit, 'Fetch remote Opic', :class => 'btn btn-primary'
+    .modal-footer= f.button :submit, 'Fetch Remote Opic', :class => 'btn btn-secondary'
