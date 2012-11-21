@@ -2,7 +2,7 @@ $ ->
   window.image_source = $('img.ajax-load').attr('src')
   $('img.ajax-load').attr('src', 'assets/ajax_loader.gif')
 
-  setImageSource()
+  checkForImage()
 
 checkForImage = ->
   $.get(image_source).success(setImageSource).error(setCheckForImageTimeout)
