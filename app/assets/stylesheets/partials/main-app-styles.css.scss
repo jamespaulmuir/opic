@@ -94,7 +94,7 @@ body { // Brutus Buckeye overlay
       color: #fff; } } }
 
 // Both columns
-#content-container {
+.content-container {
   @include breakpoint(larger-than-tablet) { // Pseudo element background to fake full equal height columns
     position: relative;
     z-index: 1;
