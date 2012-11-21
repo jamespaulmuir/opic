@@ -95,6 +95,15 @@ body { // Brutus Buckeye overlay
 
 // Both columns
 .content-container {
+  overflow: hidden;
+  a {
+    &:link,
+    &:visited {
+      color: #900; }
+    &:hover,
+    &:active,
+    &:focus {
+      color: #700; } }
   @include breakpoint(larger-than-tablet) { // Pseudo element background to fake full equal height columns
     position: relative;
     z-index: 1;
@@ -107,16 +116,7 @@ body { // Brutus Buckeye overlay
       right:0;
       width: 65.81196581196582%; // .span8
       @include light-background;
-      box-shadow: 0 0 3em 0 #dbe0da; } }
-  overflow: hidden;
-  a {
-    &:link,
-    &:visited {
-      color: #900; }
-    &:hover,
-    &:active,
-    &:focus {
-      color: #700; } } }
+      box-shadow: 0 0 3em 0 #dbe0da; } } }
 
 // Left column
 .left-column {
@@ -231,10 +231,10 @@ body { // Brutus Buckeye overlay
 .currently-opted-out {
   text-align: center; }
 
-// Form
-.update-your-opic {
-  .file-field {
-    margin-bottom: 4px; } }
+// Modal forms
+.modal {
+  form {
+    margin-bottom: 0; } }
 
 // One column
 .one-column {
