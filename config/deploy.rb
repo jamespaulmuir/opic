@@ -74,7 +74,7 @@ before "deploy:assets:precompile" do
     "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml",
     "ln -fs #{shared_path}/uploads #{release_path}/public/uploads",
     "ln -fs #{shared_path}/tmp/pids #{release_path}/tmp/pids",
-    "touch #{release_path} && rm #{release_path}/public/system"
+    "touch #{release_path}/public/system && rm #{release_path}/public/system"
   ].join(" && ")
 end
 
