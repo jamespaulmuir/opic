@@ -141,8 +141,6 @@ body { // Brutus Buckeye overlay
   @include light-background;
   box-shadow: 0 0 3em 0 #dbe0da;
   @include breakpoint(tablet) {
-    padding: 2em; }
-  @include breakpoint(mobile) {
     padding: 1em; }
   @include breakpoint(larger-than-tablet) { // To accomodate the pseudo element background to fake full equal height columns
     background: none;
@@ -169,6 +167,8 @@ body { // Brutus Buckeye overlay
   background: #fff;
   border: 1px solid #DDD;
   border-top: none;
+  @include breakpoint(tablet) {
+    padding: 1em; }
   .well {
     text-align: center;
     @include breakpoint(desktop) {
@@ -178,6 +178,7 @@ body { // Brutus Buckeye overlay
       width: 100%; }
     @include breakpoint(tablet) {
       float: left;
+      padding: 0;
       margin-left: 2.127659574468085%;
       width: 48.93617021276595%; }
     @include breakpoint(mobile) {
