@@ -1,22 +1,21 @@
-- content_for(:title, 'About Opic')
+- content_for(:title, 'About')
 
-%h2 About Opic
+.one-column
+  %h2 About
+  %hr
 
-.row
-  .span4
-    %h4 Inspiration
-    Opic is inspired by #{link_to 'Gravatar', 'http://gravatar.com'}. It allows us to include pictures in our apps and websites without duplicating work in each of them while offering a self-service, centralized and easy to use picture service for the university.
+  %h3 Inspiration
+  Opic is inspired by #{link_to 'Gravatar', 'http://gravatar.com'}, which is a service for providing globally unique avatars. With Opic we're now able to include photos in our apps and websites without needlessly duplicating work. It's a self-service, centralized, and easy to use picture service for the university.
 
-  .span4
-    %h4 Collaboration
-    Opic was built and is maintained by the ASCTech Web and Data Solutions team. The OSU Libraries team graciously offered some of their designer's time to give Opic a great look and experience.
+  %h3 Collaboration
+  Opic was built and is maintained by the ASCTech Web and Data Solutions team with help from the OSU Libraries Web Implementation Team.
 
-  .span4
-    %h4 Opic Collaborators
+  .row-fluid.about-developers
     - @collaborators_hash.each do |email, name|
       - next unless email.ends_with?('@osu.edu')
       - name_n = email.gsub('@osu.edu', '')
 
-      .clearfix
-        = image_tag "http://opic.osu.edu/#{name_n}?width=150", alt: "Opic avatar for #{name}"
-        %strong= name
+      .span4
+        = image_tag "http://opic.osu.edu/#{name_n}?width=400", alt: "Opic avatar for #{name}"
+        %p
+          %strong= name

@@ -51,7 +51,7 @@
             %h1= link_to 'Welcome to Opic!', root_url, :title => "An Ohio State University Avatar Service"
             %p= link_to 'The Ohio State University Avatar Service', root_url
         .row-fluid
-          #content-container
+          #main-content.content-container
             .span12
               = content_for?(:content) ? yield(:content) : yield
       .container-fluid.footer-container
