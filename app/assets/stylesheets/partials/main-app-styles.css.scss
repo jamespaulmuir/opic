@@ -77,7 +77,7 @@ body { // Brutus Buckeye overlay
     @include breakpoint(tablet) {
       padding: 6px 0 0;
       &:before {
-        background: none; } } }
+        background: none !important; } } }
   p {
     margin: 0 0 0 120px;
     font-size: 24px;
