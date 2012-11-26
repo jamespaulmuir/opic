@@ -58,7 +58,7 @@ end
 
 namespace :deploy do
   namespace :assets do
-    task :precompile, :roles => :web, :except => { :no_release => true, :cowboy_deploy => true } do
+    task :precompile, :roles => :web, :except => { :no_release => true } do
       from = source.next_revision(current_revision)
       if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ lib/assets | wc -l").to_i > 0
         run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
@@ -74,10 +74,9 @@ before "deploy:assets:precompile" do
     "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml",
     "ln -fs #{shared_path}/uploads #{release_path}/public/uploads",
     "ln -fs #{shared_path}/tmp/pids #{release_path}/tmp/pids",
-    "rm #{release_path}/public/system"
+    "touch #{release_path}/public/system && rm #{release_path}/public/system"
   ].join(" && ")
 end
 
 after "deploy", "delayed_job:restart", "deploy:cleanup"
-
 after "deploy:create_symlink", "deploy:assets:precompile"

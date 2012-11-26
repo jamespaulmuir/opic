@@ -5,17 +5,15 @@
   %hr
 
   %h3 Inspiration
-  Opic is inspired by #{link_to 'Gravatar', 'http://gravatar.com'}, which is a service for providing globally unique avatars. With Opic we're now able to include photos in our apps and websites without needlessly duplicating work. It's a self-service, centralized, and easy to use picture service for the university.
+  Opic is inspired by #{link_to 'Gravatar', 'http://gravatar.com'}, which is a service for providing globally unique avatars. With Opic we're now able to include photos in our University apps and websites without needlessly duplicating work. It's a self-service, centralized, and easy to use picture service for the university.
 
   %h3 Collaboration
-  Opic was built and is maintained by the ASCTech Web and Data Solutions team with help from the OSU Libraries Web Implementation Team.
+  Opic was built and is maintained by the ASCTech Application Development team with help from the OSU Libraries Web Implementation Team.
 
-  .row-fluid.about-developers
-    - @collaborators_hash.each do |email, name|
-      - next unless email.ends_with?('@osu.edu')
-      - name_n = email.gsub('@osu.edu', '')
-
-      .span4
-        = image_tag "http://opic.osu.edu/#{name_n}?width=400", alt: "Opic avatar for #{name}"
-        %p
-          %strong= name
+  - @collaborators_hash.each_slice(4) do |collaborators_chunk|
+    .row-fluid.about-developers
+      - collaborators_chunk.each do |email, name|
+        .span3
+          = image_tag "http://opic.osu.edu/#{email.gsub('@osu.edu', '')}?width=400", alt: "Opic avatar for #{name}"
+          %p
+            %strong= name
