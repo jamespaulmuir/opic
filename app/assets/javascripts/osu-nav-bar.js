@@ -1,5 +1,5 @@
 /**
- * Handles toggling the OSU nav bar navigation menu for small screens. Modified from the WordPress _s theme.
+ * Handles toggling the OSU nav bar nav menu for small screens. Modified from the WordPress _s theme.
  */
 jQuery( document ).ready( function( $ ) {
 	var $masthead = $( '#osu-nav-bar-outer' ),
@@ -20,10 +20,10 @@ jQuery( document ).ready( function( $ ) {
 	};
 
 	// Check viewport width on first load.
-	if ( $( window ).width() < 500 )
+	if ( $( window ).width() < 979 )
 		$.fn.smallMenu();
 
-	if ( $( window ).width() < 360 )
+	if ( $( window ).width() < 500 )
 		$.fn.abbreviation();
 
 	// Check viewport width when user resizes the browser window.
@@ -34,7 +34,7 @@ jQuery( document ).ready( function( $ ) {
 			clearTimeout( timeout );
 
 		timeout = setTimeout( function() {
-			if ( browserWidth < 500 ) {
+			if ( browserWidth < 979 ) {
 				$.fn.smallMenu();
 			} else {
 				$masthead.find( '#osu-nav-primary' ).removeClass( 'osu-nav-bar-small-navigation' ).addClass( 'osu-nav-bar-main-navigation' );
@@ -42,7 +42,7 @@ jQuery( document ).ready( function( $ ) {
 				$masthead.find( '.menu' ).removeAttr( 'style' );
 			}
 
-			if ( browserWidth < 360 ) {
+			if ( browserWidth < 500 ) {
 				$.fn.abbreviation();
 			} else {
 				$( '#osu-site-title a:first-child' ).text('The Ohio State University');
