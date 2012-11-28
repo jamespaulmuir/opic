@@ -203,7 +203,8 @@ body { // Brutus Buckeye overlay
     img {
       filter: url(filters.svg#grayscale); // Firefox 3.5+
       filter: gray; // IE6-9
-      -webkit-filter: grayscale(1); // Google Chrome & Safari 6+
+      -webkit-filter: grayscale(100%); // Google Chrome & Safari 6+
+      -o-filter: grayscale(100%);
       border-radius: 100%;
       &:hover {
         filter: none;
