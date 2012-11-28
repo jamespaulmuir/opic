@@ -201,10 +201,12 @@ body { // Brutus Buckeye overlay
     p {
       margin-top: 20px; }
     img {
+      width: 150px;
+      height: 150px;
       filter: url(filters.svg#grayscale); // Firefox 3.5+
       filter: gray; // IE6-9
       -webkit-filter: grayscale(100%); // Google Chrome & Safari 6+
-      -o-filter: grayscale(100%);
+      -o-filter: grayscale(100%); // Opera
       border-radius: 100%;
       &:hover {
         filter: none;
