@@ -218,19 +218,20 @@ body { // Brutus Buckeye overlay
     height: 150px;
     background: url("icons.png") no-repeat; } }
 
-#upload-opic { // Update your Opic icon
+.svg .opic-tabs-body i { // If SVG is present via Modernizr
+  background: url("icons.svg") no-repeat;
+  zoom: 1;
+  filter: alpha(opacity=80);
+  opacity: 0.8;
   &:hover {
-    background-position: -150px 0; } }
+    filter: alpha(opacity=100);
+    opacity: 1; } }
 
 #fetch-remote-opic { // Fetch Remote Opic icon
-  background-position: 0 -150px;
-  &:hover {
-    background-position: -150px -150px; } }
+  background-position: 0 -150px; }
 
 #opt-out-opic { // Opt Out of Opic icon
-  background-position: 0 -300px;
-  &:hover {
-    background-position: -150px -300px; } }
+  background-position: 0 -300px; }
 
 .currently-opted-out {
   text-align: center; }
