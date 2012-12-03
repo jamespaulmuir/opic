@@ -1,4 +1,6 @@
 // OSU nav bar
+// Requires .clearfix and .visuallyhidden from _helper-classes.css.scss
+
 #osu-nav-bar-outer {
   position: relative;
   z-index: 1;
@@ -71,7 +73,7 @@
     &:before {
       content: "\25B8";
       font-size: 14px;
-      color: #777777;
+      color: #777;
       padding: 0 5px 0 1px;
       border-bottom: 1px solid #dbdbdb; }
     &:first-child {
@@ -87,7 +89,6 @@
 #osu-nav-primary {
   float: right;
   font-size: 12px;
-  margin-top: 2px;
   ul {
     margin: 0; }
   li {
@@ -100,21 +101,41 @@
       text-decoration: underline;
       border: none; } } }
 
-// Media queries
-@media only screen and (max-width: 979px) { // Float the navigation links left
-  #osu-nav-primary {
-    float: left;
-    clear: left;
-    a {
-      padding: 0 12px 0 0; } } }
-
 // Small menu 
 .menu-toggle {
   display: none;
-  cursor: pointer; }
+  cursor: pointer;
+  margin: 0;
+  font-size: 12px;
+  line-height: 2.5;
+  letter-spacing: 1px;
+  color: #5D5D5D;
+  &:hover {
+    color: #2D2D2D; }
+  &:after {
+    content: "\25BC";
+    padding-left: 1px;
+    font-size: 10px; } }
 
 .osu-nav-bar-small-navigation .menu {
   display: none; }
+
+// Media queries
+@media only screen and (max-width: 979px) { // Float the navigation links left
+  #osu-nav-primary {
+    position: relative;
+    float: left;
+    clear: both;
+    width: 100%;
+    .menu {
+      margin-top: 6px; }
+    a {
+      padding: 0 12px 0 0; } }
+  .menu-toggle {
+    position: absolute;
+    display: block;
+    top: -25px;
+    right: 0; } }
 
 @media only screen and (max-width: 500px) { // Drop the navigation links back into a vertical list
 
@@ -122,11 +143,11 @@
     &:before {
       background: #981c00; } }
 
-  #osu-site-title {
-    margin-bottom: 12px; }
-
   #osu-nav-primary {
     float: none;
+    .menu {
+      margin: 0;
+      padding-top: 6px; }
     li {
       display: list-item;
       list-style: none; }
@@ -146,10 +167,6 @@
         &:active {
           background: rgba(249, 249, 247, .9); } } }
 
-  .menu-toggle {
-    margin-bottom: 8px; }
-
-  .menu-toggle,
   .osu-nav-bar-small-navigation ul.nav-menu.toggled-on {
     display: block; }
 
