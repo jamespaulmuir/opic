@@ -8,26 +8,19 @@ if (Modernizr.mq('only all')) {
 		var $masthead = $( '#osu-nav-bar-outer' ),
 		    timeout = false;
 
-		$.fn.smallMenu = function() {
-			$masthead.find( '#osu-nav-primary h3' ).removeClass( 'visuallyhidden' ).addClass( 'menu-toggle' );
-			$masthead.find( '#osu-nav-primary' ).removeClass( 'osu-nav-bar-main-navigation' ).addClass( 'osu-nav-bar-small-navigation' );
+		$.fn.OSUsmallMenu = function() {
+			$masthead.find( '#osu-nav-primary h3' ).removeClass( 'visuallyhidden' ).addClass( 'osu-nav-menu-toggle' );
+			$masthead.find( '#osu-nav-primary' ).removeClass( 'osu-nav-main-navigation' ).addClass( 'osu-nav-small-navigation' );
 
-			$( '.menu-toggle' ).unbind( 'click' ).click( function() {
-				$masthead.find( '.menu' ).toggle();
+			$( '.osu-nav-menu-toggle' ).unbind( 'click' ).click( function() {
+				$masthead.find( '.osu-nav-menu' ).toggle();
 				$( this ).toggleClass( 'toggled-on' );
 			} );
 		};
 
-		$.fn.abbreviation = function() {
-			$( '#osu-site-title a:first-child' ).text('OSU');
-		};
-
 		// Check viewport width on first load.
-		if ( $( window ).width() < 979 )
-			$.fn.smallMenu();
-
-		if ( $( window ).width() < 500 )
-			$.fn.abbreviation();
+		if ( $( window ).width() < 800 )
+			$.fn.OSUsmallMenu();
 
 		// Check viewport width when user resizes the browser window.
 		$( window ).resize( function() {
@@ -37,18 +30,12 @@ if (Modernizr.mq('only all')) {
 				clearTimeout( timeout );
 
 			timeout = setTimeout( function() {
-				if ( browserWidth < 979 ) {
-					$.fn.smallMenu();
+				if ( browserWidth < 800 ) {
+					$.fn.OSUsmallMenu();
 				} else {
-					$masthead.find( '#osu-nav-primary' ).removeClass( 'osu-nav-bar-small-navigation' ).addClass( 'osu-nav-bar-main-navigation' );
-					$masthead.find( '#osu-nav-primary h3' ).removeClass( 'menu-toggle' ).addClass( 'visuallyhidden' );
-					$masthead.find( '.menu' ).removeAttr( 'style' );
-				}
-
-				if ( browserWidth < 500 ) {
-					$.fn.abbreviation();
-				} else {
-					$( '#osu-site-title a:first-child' ).text('The Ohio State University');
+					$masthead.find( '#osu-nav-primary' ).removeClass( 'osu-nav-small-navigation' ).addClass( 'osu-nav-main-navigation' );
+					$masthead.find( '#osu-nav-primary h3' ).removeClass( 'osu-nav-menu-toggle' ).addClass( 'visuallyhidden' );
+					$masthead.find( '.osu-nav-menu' ).removeAttr( 'style' );
 				}
 
 			}, 200 );
