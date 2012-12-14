@@ -1,7 +1,7 @@
 Opic::Application.routes.draw do
 
   get '/:name_n' => 'pictures#show', :constraints => {:name_n => /\D+\.\d+/ }
-  get '/:hash'   => 'pictures#show'
+  get '/hash/:hash'   => 'pictures#show'
 
   root :to => 'avatars#new'
 
