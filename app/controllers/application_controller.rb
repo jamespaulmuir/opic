@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
     params[:default] || "#{root_url}assets/#{aspect}#{width}_brutus_buckeye.png"
   end
 
+  def round_up_to_any(num, p=50)
+    (num.to_f/p).ceil * p
+  end
+
 end

@@ -11,6 +11,11 @@ class PicturesController < ApplicationController
     params[:width]    ||= 100
     params[:aspect]   ||= 's'
 
+    
+    unless AvatarUploader::WIDTHS.include?(params[:width])
+      params[:width] =  [AvatarUploader::WIDTHS.max,round_up_to_any(params[:width],50)].min
+    end
+
     user = User.find_by_name_n(name_n) || User.find_by_hashed_name_n(hashed_name_n)
 
     if user && user.avatars.present?
